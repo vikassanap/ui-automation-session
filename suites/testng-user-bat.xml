@@ -3,7 +3,7 @@
 <suite name="User Account" verbose="1" >
     <test name="User Login" >
         <classes>
-            <class name="com.company.proautomation.ProAutomationApplicationTests" />
+            <class name="com.company.proautomation.TestUserAccount" />
         </classes>
     </test>
 </suite>

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 @SpringBootTest(classes = ProAutomationApplication.class)
 @Slf4j
@@ -17,30 +17,35 @@ class TestUserAccount extends AbstractTestNGSpringContextTests {
 	@Value("${base.url}")
 	private String baseURL;
 
-	@Autowired
-	Student student;
+	@BeforeClass
+	void beforeClass(){
+		log.info("this is before class");
+	}
 
-	@Test
-	void contextLoads() {
-		log.info("Hello world!");
-		System.out.println(baseURL);
 
-		student.setName("vikas");
-		student.setRollNo(12345);
-
-		student.sayHello();
-
-		System.out.println(student.toString());
+	@BeforeMethod
+	void beforeMethod(){
+		log.info("this is before method");
 	}
 
 	@Test
-	void browserTest() {
-		WebDriverManager.firefoxdriver().setup();
-		WebDriver driver = new FirefoxDriver();
+	void loginTest1() {
+		log.info("login test 1");
+	}
 
-		driver.get(baseURL);
+	@Test
+	void loginTest2() {
+		log.info("login test 2");
+	}
 
-		driver.quit();
+	@AfterMethod
+	void afterMethod(){
+		log.info("this is after method");
+	}
+
+	@AfterClass
+	void afterClass(){
+		log.info("this is after class");
 	}
 
 }
