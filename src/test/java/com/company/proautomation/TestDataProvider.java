@@ -8,39 +8,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 @SpringBootTest(classes = ProAutomationApplication.class)
 @Slf4j
-class TestUserLogin extends AbstractTestNGSpringContextTests {
+class TestDataProvider extends AbstractTestNGSpringContextTests {
 
-	@Value("${base.url}")
-	private String baseURL;
+	/**
+	 *
+	 * @return
+	 */
+	@DataProvider(name = "users")
+	public Object[][] getUsers() {
 
-	@Autowired
-	Student student;
 
-	@Test
-	void contextLoads() {
-		log.info("Hello world!");
-		System.out.println(baseURL);
-
-		student.setName("vikas");
-		student.setRollNo(12345);
-
-		student.sayHello();
-
-		System.out.println(student.toString());
+		return new Object[][] {
+				{ "Cedric", "xyz", "Welcome" },
+				{ "Vikas", "abc", "Bye" },
+		};
 	}
 
-	@Test
-	void browserTest() {
-		WebDriverManager.firefoxdriver().setup();
-		WebDriver driver = new FirefoxDriver();
 
-		driver.get(baseURL);
+	@Test(dataProvider = "users", description = "")
+	void userLogin(String userName, String password, String welcomeMessage){
 
-		driver.quit();
+		log.info("username {}, password {} and {}", userName, password, welcomeMessage);
+
 	}
+
 
 }
