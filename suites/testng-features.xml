@@ -1,0 +1,25 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="TestNG Basics" verbose="1" >
+    <test name="Before After Metnods" >
+        <classes>
+            <class name="com.company.proautomation.TestBeforeAfter1" />
+            <class name="com.company.proautomation.TestBeforeAfter2" />
+        </classes>
+    </test>
+    <test name="Assertions" >
+        <classes>
+            <class name="com.company.proautomation.TestAssertions" />
+        </classes>
+    </test>
+    <test name="Data Provider" >
+        <classes>
+            <class name="com.company.proautomation.TestDataProvider" />
+        </classes>
+    </test>
+    <test name="Dependency" >
+        <classes>
+            <class name="com.company.proautomation.TestDependency" />
+        </classes>
+    </test>
+</suite>
